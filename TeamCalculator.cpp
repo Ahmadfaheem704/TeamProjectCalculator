@@ -16,9 +16,11 @@ public:
     }
 
     // Operator overloading for addition
-    Calculator operator+() const {
+    Calculator operator+(const Calculator& other) const {
+        Calculator temp;
+        temp.result = this->result + other.result;
+        return temp;
     }
-
     // Operator overloading for multiplication
     Calculator operator*(const Calculator& other) const {
         Calculator temp;
