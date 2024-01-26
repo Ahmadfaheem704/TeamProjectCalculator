@@ -27,14 +27,25 @@ public:
     }
 
     // Operator overloading for subtraction
-    Calculator operator-() const {
-        
-    }
+   Calculator operator-(const Calculator& other) const {
+        Calculator temp;
+        temp.result = this->result - other.result;
+        return temp;
 
     // Operator overloading for division
-    Calculator operator/() const {
+    Calculator operator/(const Calculator& other) const {
+        // Check for division by zero
+        if (other.result != 0) {
+            Calculator temp;
+            temp.result = this->result / other.result;
+            return temp;
+        } else {
+           cerr << "Error: Division by zero is undefined." << std::endl;
+            Calculator temp;
+            temp.error = true;  // Set the error flag
+            return temp;
+        }
     }
-
         void setResult(double value) {
         result = value;
     }
